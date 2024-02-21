@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/utils/color_constants/color_constants.dart';
 import 'package:note_app/view/home_page/widgets/customnote.dart';
-import 'package:note_app/view/note_listpage/note_listpage.dart';
+import 'package:note_app/view/home_page/widgets/note_listpage.dart';
+// import 'package:note_app/view/note_listpage/note_listpage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
