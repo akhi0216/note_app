@@ -30,11 +30,6 @@ class _HomePageState extends State<HomePage> {
           itemCount: 2),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //       builder: (context) => NoteListpage(),
-          //     ));
           showModalBottomSheet(
             context: context,
             builder: (context) {

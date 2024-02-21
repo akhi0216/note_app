@@ -15,7 +15,7 @@ class _NoteListpageState extends State<NoteListpage> {
     Colorconstants.containerthree,
     Colorconstants.containerfour
   ];
-
+  int selectedindex = 0;
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
@@ -78,17 +78,25 @@ class _NoteListpageState extends State<NoteListpage> {
             SizedBox(height: 15),
 
             SizedBox(
-                height: 60,
+                height: 100,
                 child: ListView.separated(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Container(
-                        width: 60,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 2, color: Colorconstants.mainwhite),
-                            color: colorslist[index]),
+                      return InkWell(
+                        onTap: () {
+                          print(index);
+                          selectedindex = index;
+                          bottomsetstate(() {});
+                        },
+                        child: Container(
+                          height: index == selectedindex ? 50 : 100,
+                          width: index == selectedindex ? 50 : 100,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 2, color: Colorconstants.mainwhite),
+                              color: colorslist[index]),
+                        ),
                       );
                     },
                     separatorBuilder: (context, index) => SizedBox(width: 5),
