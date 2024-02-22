@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/controller/homepage_controller.dart';
 import 'package:note_app/utils/color_constants/color_constants.dart';
 import 'package:note_app/view/home_page/widgets/customnote.dart';
 import 'package:note_app/view/home_page/widgets/note_listpage.dart';
@@ -12,6 +13,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Homepagecontroller saveobj = Homepagecontroller();
+  Homepagecontroller deleteobj = Homepagecontroller();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,18 +26,32 @@ class _HomePageState extends State<HomePage> {
       body: ListView.separated(
           itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.all(10),
-                child: custonotewidget(),
+                child: custonotewidget(
+                  title: saveobj.noteslist[index]["title"],
+                  des: saveobj.noteslist[index]["des"],
+                  date: saveobj.noteslist[index]["date"],
+                  color: saveobj.noteslist[index]["color"],
+                  ondeletepressed: () {
+                    deleteobj.deleteData(index);
+                    setState(() {});
+                  },
+                ),
               ),
           separatorBuilder: (context, index) => SizedBox(
                 height: 7,
               ),
-          itemCount: 2),
+          itemCount: saveobj.noteslist.length),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return NoteListpage();
+              return NoteListpage(
+                onSavepressed: () {
+                  saveobj.addData();
+                  setState(() {});
+                },
+              );
             },
           );
         },

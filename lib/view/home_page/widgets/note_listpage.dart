@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/controller/homepage_controller.dart';
 import 'package:note_app/utils/color_constants/color_constants.dart';
 
 class NoteListpage extends StatefulWidget {
-  const NoteListpage({super.key});
+  const NoteListpage({
+    super.key,
+    this.onSavepressed,
+  });
+
+  final void Function()? onSavepressed;
 
   @override
   State<NoteListpage> createState() => _NoteListpageState();
@@ -15,6 +21,7 @@ class _NoteListpageState extends State<NoteListpage> {
     Colorconstants.containerthree,
     Colorconstants.containerfour
   ];
+
   int selectedindex = 0;
   @override
   Widget build(BuildContext context) {
@@ -111,16 +118,23 @@ class _NoteListpageState extends State<NoteListpage> {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        border: Border.all(color: Colors.black, width: 2)),
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    child: Center(
-                      child: Text(
-                        "save",
-                        style: TextStyle(color: Colors.black),
+                  child: InkWell(
+                    onTap: () {
+                      widget.onSavepressed!();
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(color: Colors.black, width: 2)),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      child: Center(
+                        child: Text(
+                          "save",
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                     ),
                   ),
