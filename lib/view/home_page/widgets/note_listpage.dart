@@ -78,7 +78,7 @@ class _NoteListpageState extends State<NoteListpage> {
             SizedBox(height: 15),
 
             SizedBox(
-                height: 100,
+                height: 120,
                 child: ListView.separated(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
@@ -87,15 +87,19 @@ class _NoteListpageState extends State<NoteListpage> {
                         onTap: () {
                           print(index);
                           selectedindex = index;
-                          bottomsetstate(() {});
+                          bottomsetstate(() {
+                            // selectedindex = index;
+                          });
                         },
-                        child: Container(
-                          height: index == selectedindex ? 50 : 100,
-                          width: index == selectedindex ? 50 : 100,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  width: 2, color: Colorconstants.mainwhite),
-                              color: colorslist[index]),
+                        child: Center(
+                          child: Container(
+                            height: index == selectedindex ? 100 : 50,
+                            width: index == selectedindex ? 100 : 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 2, color: Colorconstants.mainwhite),
+                                color: colorslist[index]),
+                          ),
                         ),
                       );
                     },

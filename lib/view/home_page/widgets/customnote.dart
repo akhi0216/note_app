@@ -46,13 +46,19 @@ class custonotewidget extends StatelessWidget {
             ],
           ),
           // 2nd
-          // Text("iaaaa")
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text("iaaaa"),
+            ],
+          ),
           SizedBox(height: 100),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text("tue,feb20,2024"),
+              SizedBox(width: 10),
               Icon(
                 Icons.share,
                 color: Colorconstants.mainblack,
