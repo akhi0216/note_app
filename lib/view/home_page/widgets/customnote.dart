@@ -28,7 +28,7 @@ class _custonotewidgetState extends State<custonotewidget> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(12),
-      height: 270,
+      // height: 270,
       decoration: BoxDecoration(
         color: widget.color,
         // color: Colorconstants.yellowcontainer,
@@ -79,10 +79,13 @@ class _custonotewidgetState extends State<custonotewidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(widget.des),
+              Text(
+                widget.des,
+                // maxLines: 2,
+              ),
             ],
           ),
-          SizedBox(height: 100),
+          // SizedBox(height: 100),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,

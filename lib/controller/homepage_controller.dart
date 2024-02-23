@@ -4,7 +4,7 @@ class Homepagecontroller {
   List noteslist = [
     {
       "title": "my note",
-      "des": "blahhhh",
+      "des": "blahhhhhhhhhhhhh",
       "date": "21 april",
       "color": Colors.white
     },
