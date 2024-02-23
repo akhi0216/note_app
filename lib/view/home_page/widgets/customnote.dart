@@ -68,7 +68,7 @@ class _custonotewidgetState extends State<custonotewidget> {
                       color: Colorconstants.mainblack,
                     ),
                     onPressed: () {
-                      widget.ondeletepressed;
+                      widget.ondeletepressed!();
                     },
                   )
                 ],

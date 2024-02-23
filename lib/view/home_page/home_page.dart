@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Homepagecontroller saveobj = Homepagecontroller();
-  Homepagecontroller deleteobj = Homepagecontroller();
+  // Homepagecontroller deleteobj = Homepagecontroller();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                   date: saveobj.noteslist[index]["date"],
                   color: saveobj.noteslist[index]["color"],
                   ondeletepressed: () {
-                    deleteobj.deleteData(index);
+                    saveobj.deleteData(index);
                     setState(() {});
                   },
                 ),
