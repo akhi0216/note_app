@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:note_app/controller/homepage_controller.dart';
 import 'package:note_app/utils/color_constants/color_constants.dart';
 import 'package:note_app/view/home_page/widgets/customnote.dart';
-import 'package:note_app/view/home_page/widgets/custombottom.dart';
+import 'package:note_app/view/home_page/widgets/notelistpage.dart';
 // import 'package:note_app/view/note_listpage/note_listpage.dart';
 
 class HomePage extends StatefulWidget {
@@ -44,11 +44,13 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             context: context,
             builder: (context) {
               return NoteListpage(
                 onSavepressed: () {
                   saveobj.addData();
+
                   setState(() {});
                 },
               );
