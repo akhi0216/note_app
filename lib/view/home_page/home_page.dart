@@ -21,26 +21,41 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colorconstants.mainblack,
       appBar: AppBar(
+        title: Text(
+          "MY NOTES",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
         backgroundColor: Colorconstants.mainblack,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.all(10),
-                child: custonotewidget(
-                  title: saveobj.noteslist[index]["title"],
-                  des: saveobj.noteslist[index]["des"],
-                  date: saveobj.noteslist[index]["date"],
-                  color: saveobj.noteslist[index]["color"],
-                  ondeletepressed: () {
-                    saveobj.deleteData(index);
-                    setState(() {});
-                  },
-                ),
+      body: saveobj.noteslist.isEmpty
+          ? Center(
+              child: Text(
+                "no data found",
+                style: TextStyle(color: Colorconstants.mainwhite),
               ),
-          separatorBuilder: (context, index) => SizedBox(
-                height: 7,
-              ),
-          itemCount: saveobj.noteslist.length),
+            )
+          : ListView.separated(
+              // to reverse the ading
+              shrinkWrap: true,
+              reverse: true,
+              itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: custonotewidget(
+                      title: saveobj.noteslist[index]["title"],
+                      des: saveobj.noteslist[index]["des"],
+                      date: saveobj.noteslist[index]["date"],
+                      color: saveobj.noteslist[index]["color"],
+                      ondeletepressed: () {
+                        saveobj.deleteData(index);
+                        setState(() {});
+                      },
+                    ),
+                  ),
+              separatorBuilder: (context, index) => SizedBox(
+                    height: 7,
+                  ),
+              itemCount: saveobj.noteslist.length),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(

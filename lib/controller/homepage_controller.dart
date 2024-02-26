@@ -7,12 +7,13 @@ class Homepagecontroller {
   static TextEditingController datecontroller = TextEditingController();
   static Color selectcolor = Colors.white;
   List noteslist = [
-    {
-      "title": "my note",
-      "des": "blahhhhhhhhhhhhh",
-      "date": "21 april",
-      "color": Colors.white
-    },
+    // {
+    //   "title": "my note",
+    //   "des":
+    //       "blahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+    //   "date": "21 april",
+    //   "color": Colors.white
+    // },
   ];
 
   // function to add

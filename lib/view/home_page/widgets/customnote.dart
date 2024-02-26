@@ -37,6 +37,7 @@ class _custonotewidgetState extends State<custonotewidget> {
         ),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           // first row
 
@@ -76,14 +77,9 @@ class _custonotewidgetState extends State<custonotewidget> {
             ],
           ),
           // 2nd
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                widget.des,
-                // maxLines: 2,
-              ),
-            ],
+          Text(
+            widget.des,
+            // maxLines: 2,
           ),
           // SizedBox(height: 100),
           Row(
