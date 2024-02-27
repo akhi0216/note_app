@@ -6,9 +6,14 @@ class NoteListpage extends StatefulWidget {
   const NoteListpage({
     super.key,
     this.onSavepressed,
+    this.isedit = false,
+    //  this.oneditpressed
   });
 
   final void Function()? onSavepressed;
+  final bool isedit;
+
+  // final VoidCallback? oneditpressed;
 
   @override
   State<NoteListpage> createState() => _NoteListpageState();
@@ -170,7 +175,7 @@ class _NoteListpageState extends State<NoteListpage> {
 
                           // widget.onSavepressed!();
                           // to cleardata
-                          Homepagecontroller.clearData();
+                          // Homepagecontroller.clearData();
                           // Navigator.pop(context);
                           //
                         },
@@ -185,7 +190,7 @@ class _NoteListpageState extends State<NoteListpage> {
                               horizontal: 20, vertical: 15),
                           child: Center(
                             child: Text(
-                              "save",
+                              widget.isedit ? "update" : "save",
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
@@ -197,6 +202,8 @@ class _NoteListpageState extends State<NoteListpage> {
                       child: InkWell(
                         onTap: () {
                           Homepagecontroller.clearData();
+                          //
+                          Navigator.pop(context);
                         },
                         child: Container(
                           decoration: BoxDecoration(

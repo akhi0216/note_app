@@ -25,7 +25,16 @@ class Homepagecontroller {
       "color": selectcolor
     });
   }
+
   // functn to edit
+  void editData(int index) {
+    noteslist[index] = {
+      "title": titlecontroller.text,
+      "des": descontroller.text,
+      "date": datecontroller.text,
+      "color": selectcolor
+    };
+  }
 
   // functn to delete
 

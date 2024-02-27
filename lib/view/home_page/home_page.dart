@@ -46,8 +46,42 @@ class _HomePageState extends State<HomePage> {
                       des: saveobj.noteslist[index]["des"],
                       date: saveobj.noteslist[index]["date"],
                       color: saveobj.noteslist[index]["color"],
+                      // delete
                       ondeletepressed: () {
                         saveobj.deleteData(index);
+                        setState(() {});
+                      },
+
+                      // edit
+                      oneditpressed: () {
+                        Homepagecontroller.titlecontroller.text =
+                            saveobj.noteslist[index]["title"];
+                        Homepagecontroller.descontroller.text =
+                            saveobj.noteslist[index]["des"];
+                        Homepagecontroller.datecontroller.text =
+                            saveobj.noteslist[index]["date"];
+
+                        // to show bottom sheet
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) {
+                            return NoteListpage(
+                              isedit: true,
+
+                              onSavepressed: () {
+                                saveobj.editData(index);
+
+                                setState(() {});
+                                Homepagecontroller.clearData();
+                                //
+                                Navigator.pop(context);
+                              },
+                              // end of bottom sheet
+                            );
+                          },
+                        );
+
                         setState(() {});
                       },
                     ),
@@ -67,6 +101,9 @@ class _HomePageState extends State<HomePage> {
                   saveobj.addData();
 
                   setState(() {});
+                  Homepagecontroller.clearData();
+                  //
+                  Navigator.pop(context);
                 },
               );
             },

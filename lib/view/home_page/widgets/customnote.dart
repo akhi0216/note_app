@@ -9,6 +9,8 @@ class custonotewidget extends StatefulWidget {
     required this.date,
     required this.color,
     this.ondeletepressed,
+    this.oneditpressed,
+    //  this.isedit = false
     //  required this.onSaved,
   });
 
@@ -16,8 +18,10 @@ class custonotewidget extends StatefulWidget {
   final String des;
   final String date;
   final Color color;
+  //  final bool isedit;
 
   final VoidCallback? ondeletepressed;
+  final VoidCallback? oneditpressed;
 
   @override
   State<custonotewidget> createState() => _custonotewidgetState();
@@ -56,7 +60,9 @@ class _custonotewidgetState extends State<custonotewidget> {
                       Icons.edit,
                       color: Colorconstants.mainblack,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      widget.oneditpressed!();
+                    },
                   ),
                   SizedBox(
                     width: 10,
