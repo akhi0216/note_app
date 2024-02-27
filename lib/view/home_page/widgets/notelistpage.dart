@@ -103,6 +103,7 @@ class _NoteListpageState extends State<NoteListpage> {
                 ),
                 SizedBox(height: 15),
                 TextFormField(
+                  readOnly: true,
                   validator: (value) {
                     // if (valobj.noteslist.isNotEmpty)
                     if (Homepagecontroller.datecontroller.text.isNotEmpty) {
@@ -115,6 +116,19 @@ class _NoteListpageState extends State<NoteListpage> {
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
+                    suffixIcon: InkWell(
+                        onTap: () async {
+                          final DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2025),
+                          );
+                          if (pickedDate != null) {
+                            Homepagecontroller.datecontroller.text =
+                                pickedDate.toString();
+                          }
+                        },
+                        child: Icon(Icons.calendar_month_outlined)),
                     label: Text(
                       "Date",
                       style: TextStyle(color: Colors.black),
