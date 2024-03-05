@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:note_app/controller/homepage_controller.dart';
 import 'package:note_app/utils/color_constants/color_constants.dart';
 
@@ -124,8 +125,10 @@ class _NoteListpageState extends State<NoteListpage> {
                             lastDate: DateTime(2025),
                           );
                           if (pickedDate != null) {
+                            String formateddate =
+                                DateFormat("dd/MM/yy").format(pickedDate);
                             Homepagecontroller.datecontroller.text =
-                                pickedDate.toString();
+                                formateddate;
                           }
                         },
                         child: Icon(Icons.calendar_month_outlined)),

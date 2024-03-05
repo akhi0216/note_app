@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class Homepagecontroller {
   static TextEditingController titlecontroller = TextEditingController();
@@ -15,15 +16,24 @@ class Homepagecontroller {
     //   "color": Colors.white
     // },
   ];
-
+  List notekeys = [];
+  // var mybox = Hive.box('notebox');
+  var mybox = Hive.box('notebox');
   // function to add
   void addData() {
-    noteslist.add({
+    mybox.add({
       "title": titlecontroller.text,
       "des": descontroller.text,
       "date": datecontroller.text,
-      "color": selectcolor
+      // "color": Colors.white
     });
+    notekeys = mybox.keys.toList();
+    // noteslist.add({
+    //   "title": titlecontroller.text,
+    //   "des": descontroller.text,
+    //   "date": datecontroller.text,
+    //   "color": selectcolor
+    // });
   }
 
   // functn to edit
@@ -38,8 +48,9 @@ class Homepagecontroller {
 
   // functn to delete
 
-  void deleteData(int index) {
-    noteslist.removeAt(index);
+  void deleteData(var key) {
+    mybox.delete(key);
+    notekeys = mybox.keys.toList();
   }
 
   // fnctn to clear
@@ -52,5 +63,9 @@ class Homepagecontroller {
   // on selectioncolor
   void onColorselction(newcolor) {
     selectcolor = newcolor;
+  }
+
+  init() {
+    notekeys = mybox.keys.toList();
   }
 }

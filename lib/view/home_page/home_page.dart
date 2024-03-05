@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+// import 'package:hive/hive.dart';
+//import 'package:hive/hive.dart';
 import 'package:note_app/controller/homepage_controller.dart';
 import 'package:note_app/utils/color_constants/color_constants.dart';
 import 'package:note_app/view/home_page/widgets/customnote.dart';
@@ -15,8 +18,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Homepagecontroller saveobj = Homepagecontroller();
   // Homepagecontroller deleteobj = Homepagecontroller();
-
+  var mybox = Hive.box('notebox');
   @override
+  void initState() {
+    saveobj.init();
+    setState(() {});
+    super.initState();
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colorconstants.mainblack,
@@ -28,7 +38,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: Colorconstants.mainblack,
       ),
-      body: saveobj.noteslist.isEmpty
+      body: saveobj.notekeys.isEmpty
           ? Center(
               child: Text(
                 "no data found",
@@ -42,10 +52,10 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(10),
                     child: custonotewidget(
-                      title: saveobj.noteslist[index]["title"],
-                      des: saveobj.noteslist[index]["des"],
-                      date: saveobj.noteslist[index]["date"],
-                      color: saveobj.noteslist[index]["color"],
+                      title: mybox.get(saveobj.notekeys[index])["title"],
+                      des: mybox.get(saveobj.notekeys[index])["des"],
+                      date: mybox.get(saveobj.notekeys[index])["date"],
+                      color: Colors.white,
                       // delete
                       ondeletepressed: () {
                         saveobj.deleteData(index);
@@ -85,11 +95,13 @@ class _HomePageState extends State<HomePage> {
                         setState(() {});
                       },
                     ),
+
+                    // custom note ends
                   ),
               separatorBuilder: (context, index) => SizedBox(
                     height: 7,
                   ),
-              itemCount: saveobj.noteslist.length),
+              itemCount: saveobj.notekeys.length),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
