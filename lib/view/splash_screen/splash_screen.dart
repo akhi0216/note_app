@@ -25,18 +25,21 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.blueAccent,
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-              height: 150,
-              width: 150,
+              height: 100,
+              width: 100,
               child: Image.asset(Imageconstants.splashlogo)),
           Text(
             "My Notes",
-            style: TextStyle(color: Colorconstants.mainwhite),
+            style: TextStyle(
+                color: Colorconstants.mainwhite,
+                fontWeight: FontWeight.w500,
+                fontSize: 25),
           )
         ],
       )),

@@ -32,8 +32,8 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colorconstants.mainblack,
       appBar: AppBar(
         title: Text(
-          "MY NOTES",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          "My Notes",
+          style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: Colorconstants.mainblack,
@@ -49,55 +49,62 @@ class _HomePageState extends State<HomePage> {
               // to reverse the ading
               shrinkWrap: true,
               reverse: true,
-              itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: custonotewidget(
-                      title: mybox.get(saveobj.notekeys[index])["title"],
-                      des: mybox.get(saveobj.notekeys[index])["des"],
-                      date: mybox.get(saveobj.notekeys[index])["date"],
-                      color: Colors.white,
-                      // delete
-                      ondeletepressed: () {
-                        saveobj.deleteData(index);
-                        setState(() {});
-                      },
+              itemBuilder: (context, index) {
+                var element = mybox.get(saveobj.notekeys[index]);
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: custonotewidget(
+                    // title: mybox.get(saveobj.notekeys[index])["title"],
+                    // des: mybox.get(saveobj.notekeys[index])["des"],
+                    // date: mybox.get(saveobj.notekeys[index])["date"],
+                    // color: Colors.white,
+                    title: element["title"],
+                    des: element["des"],
+                    date: element["date"],
+                    color: Colors.white,
+                    // delete
+                    ondeletepressed: () {
+                      saveobj.deleteData(index);
+                      setState(() {});
+                    },
 
-                      // edit
-                      oneditpressed: () {
-                        Homepagecontroller.titlecontroller.text =
-                            saveobj.noteslist[index]["title"];
-                        Homepagecontroller.descontroller.text =
-                            saveobj.noteslist[index]["des"];
-                        Homepagecontroller.datecontroller.text =
-                            saveobj.noteslist[index]["date"];
+                    // edit
+                    oneditpressed: () {
+                      Homepagecontroller.titlecontroller.text =
+                          saveobj.noteslist[index]["title"];
+                      Homepagecontroller.descontroller.text =
+                          saveobj.noteslist[index]["des"];
+                      Homepagecontroller.datecontroller.text =
+                          saveobj.noteslist[index]["date"];
 
-                        // to show bottom sheet
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          context: context,
-                          builder: (context) {
-                            return NoteListpage(
-                              isedit: true,
+                      // to show bottom sheet
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (context) {
+                          return NoteListpage(
+                            isedit: true,
 
-                              onSavepressed: () {
-                                saveobj.editData(index);
+                            onSavepressed: () {
+                              saveobj.editData(index);
 
-                                setState(() {});
-                                Homepagecontroller.clearData();
-                                //
-                                Navigator.pop(context);
-                              },
-                              // end of bottom sheet
-                            );
-                          },
-                        );
+                              setState(() {});
+                              Homepagecontroller.clearData();
+                              //
+                              Navigator.pop(context);
+                            },
+                            // end of bottom sheet
+                          );
+                        },
+                      );
 
-                        setState(() {});
-                      },
-                    ),
-
-                    // custom note ends
+                      setState(() {});
+                    },
                   ),
+
+                  // custom note ends
+                );
+              },
               separatorBuilder: (context, index) => SizedBox(
                     height: 7,
                   ),
