@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:note_app/utils/color_constants/color_constants.dart';
 
 class Homepagecontroller {
   static TextEditingController titlecontroller = TextEditingController();
@@ -7,11 +8,12 @@ class Homepagecontroller {
 
   static TextEditingController datecontroller = TextEditingController();
   static Color selectcolor = Colors.white;
+
   List noteslist = [
     // {
     //   "title": "my note",
     //   "des":
-    //       "blahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+    //       "blahhhhhhhhhhhhhhhhhhhhh",
     //   "date": "21 april",
     //   "color": Colors.white
     // },
@@ -25,7 +27,7 @@ class Homepagecontroller {
       "title": titlecontroller.text,
       "des": descontroller.text,
       "date": datecontroller.text,
-      // "color": Colors.white
+      // "color": selectcolor
     });
     notekeys = mybox.keys.toList();
     // noteslist.add({
@@ -37,13 +39,19 @@ class Homepagecontroller {
   }
 
   // functn to edit
-  void editData(int index) {
-    noteslist[index] = {
+  void editData(var Key) {
+    mybox.put(Key, {
       "title": titlecontroller.text,
       "des": descontroller.text,
       "date": datecontroller.text,
-      "color": selectcolor
-    };
+      //"color": selectcolor
+    });
+    // noteslist[index] = {
+    //   "title": titlecontroller.text,
+    //   "des": descontroller.text,
+    //   "date": datecontroller.text,
+    //   "color": selectcolor
+    // };
   }
 
   // functn to delete

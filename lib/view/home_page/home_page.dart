@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           "My Notes",
-          style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: Colorconstants.mainblack,
@@ -62,6 +62,7 @@ class _HomePageState extends State<HomePage> {
                     des: element["des"],
                     date: element["date"],
                     color: Colors.white,
+                    // color: element["color"],
                     // delete
                     ondeletepressed: () {
                       saveobj.deleteData(index);
@@ -71,11 +72,9 @@ class _HomePageState extends State<HomePage> {
                     // edit
                     oneditpressed: () {
                       Homepagecontroller.titlecontroller.text =
-                          saveobj.noteslist[index]["title"];
-                      Homepagecontroller.descontroller.text =
-                          saveobj.noteslist[index]["des"];
-                      Homepagecontroller.datecontroller.text =
-                          saveobj.noteslist[index]["date"];
+                          element["title"];
+                      Homepagecontroller.descontroller.text = element["des"];
+                      Homepagecontroller.datecontroller.text = element["date"];
 
                       // to show bottom sheet
                       showModalBottomSheet(
@@ -86,6 +85,7 @@ class _HomePageState extends State<HomePage> {
                             isedit: true,
 
                             onSavepressed: () {
+                              //
                               saveobj.editData(index);
 
                               setState(() {});
