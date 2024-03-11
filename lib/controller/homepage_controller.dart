@@ -27,7 +27,7 @@ class Homepagecontroller {
       "title": titlecontroller.text,
       "des": descontroller.text,
       "date": datecontroller.text,
-      // "color": selectcolor
+      //  "color": selectcolor
     });
     notekeys = mybox.keys.toList();
     // noteslist.add({
