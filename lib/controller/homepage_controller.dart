@@ -7,7 +7,14 @@ class Homepagecontroller {
   static TextEditingController descontroller = TextEditingController();
 
   static TextEditingController datecontroller = TextEditingController();
-  static Color selectcolor = Colors.white;
+  static Color selectcolor = Colors.white; //
+  static int selectedColorindex = 0;
+  static List colorslist = [
+    Colorconstants.containerone,
+    Colorconstants.containertwo,
+    Colorconstants.containerthree,
+    Colorconstants.containerfour
+  ];
 
   List noteslist = [
     // {
@@ -28,6 +35,7 @@ class Homepagecontroller {
       "des": descontroller.text,
       "date": datecontroller.text,
       //  "color": selectcolor
+      "color": selectedColorindex
     });
     notekeys = mybox.keys.toList();
     // noteslist.add({
@@ -44,6 +52,7 @@ class Homepagecontroller {
       "title": titlecontroller.text,
       "des": descontroller.text,
       "date": datecontroller.text,
+      "color": selectedColorindex
       //"color": selectcolor
     });
     // noteslist[index] = {
@@ -69,8 +78,9 @@ class Homepagecontroller {
   }
 
   // on selectioncolor
-  void onColorselction(newcolor) {
-    selectcolor = newcolor;
+  void onColorselction(int newcolorindex) {
+    // selectcolor = newcolor;
+    selectedColorindex = newcolorindex;
   }
 
   init() {

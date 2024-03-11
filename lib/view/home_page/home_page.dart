@@ -61,7 +61,8 @@ class _HomePageState extends State<HomePage> {
                     title: element["title"],
                     des: element["des"],
                     date: element["date"],
-                    color: Colors.white,
+                    color: Homepagecontroller.colorslist[element["color"]],
+                    // color: Colors.white,
                     //  color: element["color"],
                     // delete
                     ondeletepressed: () {

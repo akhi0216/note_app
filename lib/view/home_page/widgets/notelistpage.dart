@@ -21,17 +21,17 @@ class NoteListpage extends StatefulWidget {
 }
 
 class _NoteListpageState extends State<NoteListpage> {
-  List colorslist = [
-    Colorconstants.containerone,
-    Colorconstants.containertwo,
-    Colorconstants.containerthree,
-    Colorconstants.containerfour
-  ];
+  // List colorslist = [
+  //   Colorconstants.containerone,
+  //   Colorconstants.containertwo,
+  //   Colorconstants.containerthree,
+  //   Colorconstants.containerfour
+  // ];
   // TextEditingController titlecontroller = TextEditingController();
   // TextEditingController descontroller = TextEditingController();
   // TextEditingController datecontroller = TextEditingController();
 
-  int selectedindex = 0;
+  // int selectedindex = 0;
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   Homepagecontroller valobj = Homepagecontroller();
   @override
@@ -154,23 +154,34 @@ class _NoteListpageState extends State<NoteListpage> {
                           return InkWell(
                             onTap: () {
                               print(index);
-                              selectedindex = index;
+                              // selectedindex = index;
                               Homepagecontroller obj = Homepagecontroller();
-                              obj.onColorselction(colorslist[index]);
+                              //
+                              Homepagecontroller.selectedColorindex = index;
+                              obj.onColorselction(
+                                  // Homepagecontroller.colorslist[
+                                  Homepagecontroller.selectedColorindex
+                                  // ]
+                                  );
                               bottomsetstate(() {
                                 // selectedindex = index;
                               });
                             },
                             child: Center(
                               child: Container(
-                                height: index == selectedindex ? 90 : 50,
-                                width: index == selectedindex ? 90 : 50,
+                                height: 50,
+                                width: 50,
+                                // height: index == selectedindex ? 90 : 50,
+                                // width: index == selectedindex ? 90 : 50,
                                 decoration: BoxDecoration(
-                                    border: selectedindex == index
-                                        ? Border.all(
-                                            width: 2, color: Colors.red)
-                                        : null,
-                                    color: colorslist[index]),
+                                    border:
+                                        Homepagecontroller.selectedColorindex ==
+                                                index
+                                            ? Border.all(
+                                                width: 2, color: Colors.red)
+                                            : null,
+                                    color:
+                                        Homepagecontroller.colorslist[index]),
                               ),
                             ),
                           );
